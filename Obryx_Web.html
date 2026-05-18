@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obryx Technologies | AI Solutions & Modern Digital Innovation</title>
+  <meta name="description"
+    content="Obryx Technologies builds AI systems, premium websites, scalable software, SaaS platforms, branding solutions, and futuristic digital experiences for modern businesses.">
+  <meta name="keywords"
+    content="AI Agency, Software House, Web Development, SaaS Development, Branding Agency, SEO Services, Automation Systems, Mobile App Development, Pakistan Software Company, Modern Web Solutions">
+  <meta property="og:title" content="Obryx Technologies | AI Solutions & Modern Digital Innovation">
+  <meta property="og:description"
+    content="We create AI systems, powerful websites, scalable software, modern branding, and premium digital experiences for ambitious businesses.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Obryx Technologies | AI Solutions & Modern Digital Innovation">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --bg2: #08080f;
+      --surface: rgba(255, 255, 255, 0.03);
+      --surface2: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.08);
+      --border2: rgba(255, 255, 255, 0.14);
+      --text: #f0f0f8;
+      --muted: rgba(240, 240, 248, 0.5);
+      --dim: rgba(240, 240, 248, 0.25);
+      --blue: #4f8fff;
+      --blue2: #7ab3ff;
+      --purple: #a855f7;
+      --purple2: #c084fc;
+      --cyan: #22d3ee;
+      --glow-blue: rgba(79, 143, 255, 0.15);
+      --glow-purple: rgba(168, 85, 247, 0.15);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(79, 143, 255, 0.3);
+      color: #fff;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(79, 143, 255, 0.4);
+      border-radius: 4px;
+    }
+
+    /* SCROLL PROGRESS */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
+    /* LOADING SCREEN */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      transition: opacity 0.6s, visibility 0.6s;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .loader-bar {
+      width: 200px;
+      height: 1px;
+      background: var(--border2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      animation: load 1.8s ease forwards;
+    }
+
+    @keyframes load {
+      to {
+        left: 0;
+      }
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 8, 0.7);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav.scrolled {
+      border-color: var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 72px;
+      background: rgba(5, 5, 8, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 40px 5%;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    /* CANVAS */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* MOUSE GLOW */
+    .mouse-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 143, 255, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      transition: left 0.3s ease, top 0.3s ease;
+    }
+
+    /* SECTIONS */
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      position: relative;
+    }
+
+    .hero-wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: center;
+      gap: 40px;
+      min-height: calc(100vh - 72px);
+    }
+
+    .hero-inner {
+      padding: 80px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79, 143, 255, 0.08);
+      border: 1px solid rgba(79, 143, 255, 0.2);
+      border-radius: 100px;
+      padding: 6px 16px 6px 10px;
+      font-size: 12px;
+      color: var(--blue2);
+      font-weight: 500;
+      margin-bottom: 36px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 80px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-title .grad {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 60%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 30px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover::after {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(79, 143, 255, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 30px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue2);
+      transform: translateY(-2px);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 143, 255, 0.07) 0%, rgba(168, 85, 247, 0.04) 50%, transparent 70%);
+      pointer-events: none;
+      animation: drift 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-20px, 15px);
+      }
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.35s ease both;
+    }
+
+    .hero-floating-box {
+      width: 380px;
+      height: 380px;
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    /* GRID VISUAL */
+    .grid-visual {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .gv-card {
+      position: absolute;
+      border-radius: 16px;
+      border: 1px solid var(--border2);
+    }
+
+    .gv-card-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      background: rgba(12, 12, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gv-main {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-color: rgba(79, 143, 255, 0.3);
+    }
+
+    .gv-main .gv-card-inner {
+      flex-direction: column;
+      gap: 14px;
+      background: rgba(10, 12, 28, 0.9);
+      border: none;
+    }
+
+    .gv-main-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(79, 143, 255, 0.35);
+    }
+
+    .gv-main-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .gv-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue2);
+      letter-spacing: 0.01em;
+    }
+
+    .gv-sm {
+      width: 130px;
+      height: 56px;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .gv-sm .gv-card-inner {
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 600;
+      justify-content: flex-start;
+      padding: 0 16px;
+    }
+
+    .gv-sm-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .gv-1 {
+      top: 2%;
+      left: 14%;
+    }
+
+    .gv-2 {
+      top: 2%;
+      right: 8%;
+    }
+
+    .gv-3 {
+      bottom: 6%;
+      left: 4%;
+    }
+
+    .gv-4 {
+      bottom: 6%;
+      right: 6%;
+    }
+
+    .gv-sm-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @keyframes cardFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .gv-1 {
+      animation: cardFloat 5s 0s ease-in-out infinite;
+    }
+
+    .gv-2 {
+      animation: cardFloat 5s 0.8s ease-in-out infinite;
+    }
+
+    .gv-3 {
+      animation: cardFloat 5s 1.5s ease-in-out infinite;
+    }
+
+    .gv-4 {
+      animation: cardFloat 5s 0.4s ease-in-out infinite;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+
+    .orbit-1 {
+      width: 260px;
+      height: 260px;
+      margin: -130px 0 0 -130px;
+    }
+
+    .orbit-2 {
+      width: 340px;
+      height: 340px;
+      margin: -170px 0 0 -170px;
+      animation-direction: reverse;
+      animation-duration: 30s;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* STATS */
+    #stats {
+      padding: 90px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 20px;
+      text-align: center;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, var(--glow-blue), var(--glow-purple));
+      transition: opacity 0.4s;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(79, 143, 255, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* SERVICES */
+    #services {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .filter-tab {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: rgba(79, 143, 255, 0.1);
+      border-color: rgba(79, 143, 255, 0.3);
+      color: var(--blue2);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.4s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, var(--glow-blue), var(--glow-purple));
+      transition: opacity 0.4s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(79, 143, 255, 0.35);
+      transform: translateY(-6px);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(79, 143, 255, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(79, 143, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, rgba(79, 143, 255, 0.25), rgba(168, 85, 247, 0.25));
+      border-color: rgba(79, 143, 255, 0.4);
+    }
+
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--blue2);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .service-arrow {
+      margin-top: 20px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover .service-arrow {
+      border-color: var(--blue);
+      background: rgba(79, 143, 255, 0.1);
+    }
+
+    .service-arrow svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--muted);
+      stroke-width: 2;
+      transition: stroke 0.3s;
+    }
+
+    .service-card:hover .service-arrow svg {
+      stroke: var(--blue2);
+    }
+
+    /* WHY SECTION */
+    #why {
+      padding: 100px 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 60px;
+    }
+
+    .why-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+
+    .why-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .why-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .why-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .why-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* PORTFOLIO */
+    #portfolio {
+      padding: 100px 0;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 60px;
+    }
+
+    .port-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .port-card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .port-card:hover .port-card-inner {
+      transform: scale(1.04);
+    }
+
+    .port-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .port-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 5, 8, 0.9) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .port-card:hover .port-overlay {
+      opacity: 1;
+    }
+
+    .port-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: all 0.4s;
+    }
+
+    .port-card:hover .port-info {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .port-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--blue2);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .port-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    /* ABOUT */
+    #about {
+      padding: 100px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .about-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(79, 143, 255, 0.08), transparent 70%);
+    }
+
+    .about-content p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .about-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .about-stat-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      padding: 100px 0;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 60px;
+    }
+
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testi-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, var(--glow-blue), var(--glow-purple));
+      transition: opacity 0.4s;
+    }
+
+    .testi-card:hover {
+      border-color: rgba(79, 143, 255, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .testi-card:hover::before {
+      opacity: 1;
+    }
+
+    .testi-quote {
+      font-size: 32px;
+      color: var(--blue);
+      font-family: Georgia, serif;
+      line-height: 1;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-text {
+      font-size: 15px;
+      color: rgba(240, 240, 248, 0.75);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .testi-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .star {
+      color: #f59e0b;
+      font-size: 14px;
+    }
+
+    /* PROCESS */
+    #process {
+      padding: 100px 0;
+    }
+
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      margin-top: 70px;
+      position: relative;
+    }
+
+    .process-track::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79, 143, 255, 0.4), rgba(168, 85, 247, 0.4), transparent);
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 8px;
+      position: relative;
+    }
+
+    .process-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--blue2);
+      transition: all 0.4s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step:hover .process-num {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .process-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    #cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(79, 143, 255, 0.1) 0%, rgba(168, 85, 247, 0.07) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .cta-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 48px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      padding: 18px 44px;
+      border-radius: 100px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 30px 60px rgba(79, 143, 255, 0.3);
+    }
+
+    .cta-border {
+      border: 1px solid var(--border2);
+      border-radius: 32px;
+      padding: 80px;
+      background: var(--surface);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 70px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 280px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .footer-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .footer-social:hover {
+      border-color: rgba(79, 143, 255, 0.3);
+      background: rgba(79, 143, 255, 0.1);
+    }
+
+    .footer-social svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 2;
+      transition: stroke 0.3s;
+    }
+
+    .footer-social:hover svg {
+      stroke: var(--blue2);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--blue2);
+    }
+
+    .footer-contact span {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .footer-contact svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    /* DIVIDER */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      margin: 0;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .process-track {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .process-track::before {
+        display: none;
+      }
+
+      .hero-wrap {
+        grid-template-columns: 1fr 340px;
+        gap: 24px;
+      }
+
+      .hero-floating-box {
+        width: 320px;
+        height: 320px;
+      }
+    }
+
+    @media(max-width:768px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        display: none;
+      }
+
+      .cta-border {
+        padding: 48px 28px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-track {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        display: none;
+      }
+    }
+
+    @media(max-width:480px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="progress-bar"></div>
+  <div id="loader">
+    <div class="loader-logo">Obryx</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Obryx</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Clients</a>
+      <a href="#process">Process</a>
+    </div>
+    <a href="https://wa.me/923030934400?text=Hello%20Obryx%20Technologies%2C%20I%20want%20to%20start%20a%20project."
+      target="_blank" class="nav-cta">
+      Start a Project
+    </a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#portfolio" onclick="toggleMenu()">Work</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#testimonials" onclick="toggleMenu()">Clients</a>
+    <a href="#process" onclick="toggleMenu()">Process</a>
+    <a href="https://wa.me/923030934400?text=Hello%20Obryx%20Technologies%2C%20I%20want%20to%20start%20a%20project."
+      target="_blank" class="nav-cta">
+      Start a Project
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-wrap">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          AI-First Software House
+        </div>
+        <h1 class="hero-title">
+          Engineering The<br>
+          <span class="grad">Future With AI</span><br>
+          And Digital Innovation
+        </h1>
+        <p class="hero-sub">We create AI systems, powerful websites, scalable software, modern branding, and premium
+          digital experiences for ambitious businesses worldwide.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/923030934400?text=Hello%20Obryx%20Technologies%2C%20I%20want%20to%20start%20a%20project."
+            target="_blank" class="btn-primary">
+            Start Your Project
+          </a>
+          <button class="btn-outline"
+            onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+        </div>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-floating-box">
+          <div class="grid-visual">
+            <div class="orbit orbit-1">
+              <div class="orbit-dot" style="background:var(--blue);box-shadow:0 0 10px var(--blue);"></div>
+            </div>
+            <div class="orbit orbit-2">
+              <div class="orbit-dot" style="background:var(--purple);box-shadow:0 0 10px var(--purple);"></div>
+            </div>
+            <div class="gv-card gv-main">
+              <div class="gv-card-inner">
+                <div class="gv-main-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                  </svg>
+                </div>
+                <div class="gv-label">Obryx AI Core</div>
+              </div>
+            </div>
+            <div class="gv-card gv-sm gv-1">
+              <div class="gv-card-inner">
+                <div class="gv-sm-dot" style="background:#4f8fff;box-shadow:0 0 6px #4f8fff;"></div>
+                <span class="gv-sm-label">AI Systems</span>
+              </div>
+            </div>
+            <div class="gv-card gv-sm gv-2">
+              <div class="gv-card-inner">
+                <div class="gv-sm-dot" style="background:#a855f7;box-shadow:0 0 6px #a855f7;"></div>
+                <span class="gv-sm-label">SaaS Platforms</span>
+              </div>
+            </div>
+            <div class="gv-card gv-sm gv-3">
+              <div class="gv-card-inner">
+                <div class="gv-sm-dot" style="background:#22d3ee;box-shadow:0 0 6px #22d3ee;"></div>
+                <span class="gv-sm-label">Mobile Apps</span>
+              </div>
+            </div>
+            <div class="gv-card gv-sm gv-4">
+              <div class="gv-card-inner">
+                <div class="gv-sm-dot" style="background:#f59e0b;box-shadow:0 0 6px #f59e0b;"></div>
+                <span class="gv-sm-label">Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-num" data-target="240">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-num" data-target="180">0</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-num" data-target="32" data-suffix="+">0</div>
+          <div class="stat-label">Global Reach</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-num" data-target="98" data-suffix="%">0</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-num" data-target="6">0</div>
+          <div class="stat-label">Years Of Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-label reveal">What We Build</span>
+          <h2 class="section-title reveal">Services Engineered<br>For Scale</h2>
+        </div>
+        <p class="section-sub reveal" style="text-align:right;">Every solution we deliver is built with precision,
+          speed, and long-term growth in mind.</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Services</button>
+        <button class="filter-tab" data-filter="ai">AI & Automation</button>
+        <button class="filter-tab" data-filter="web">Web & SaaS</button>
+        <button class="filter-tab" data-filter="growth">Growth & Brand</button>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- WHY OBRYX -->
+  <section id="why">
+    <div class="container">
+      <span class="section-label reveal">Why Obryx</span>
+      <h2 class="section-title reveal">Built Different.<br>Engineered For Impact.</h2>
+      <div class="why-grid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-label reveal">Our Work</span>
+          <h2 class="section-title reveal">Projects That<br>Define Categories</h2>
+        </div>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-port-filter="all">All</button>
+        <button class="filter-tab" data-port-filter="ai">AI</button>
+        <button class="filter-tab" data-port-filter="web">Web</button>
+        <button class="filter-tab" data-port-filter="branding">Branding</button>
+        <button class="filter-tab" data-port-filter="mobile">Mobile</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid"></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-glow"></div>
+          <div style="text-align:center;position:relative;z-index:1;">
+            <div
+              style="font-family:var(--font-display);font-size:80px;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">
+              Obryx</div>
+            <div
+              style="font-size:13px;color:var(--muted);margin-top:12px;letter-spacing:0.15em;text-transform:uppercase;">
+              Technologies</div>
+            <div style="display:flex;gap:20px;justify-content:center;margin-top:40px;">
+              <div
+                style="width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue);animation:pulse 2s infinite;">
+              </div>
+              <div
+                style="width:8px;height:8px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);animation:pulse 2s 0.5s infinite;">
+              </div>
+              <div
+                style="width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 2s 1s infinite;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="section-label reveal">Our Story</span>
+          <h2 class="section-title reveal">Redefining How Businesses Interact With Technology</h2>
+          <p class="reveal" style="transition-delay:0.1s;">Obryx Technologies exists to close the gap between ambitious
+            vision and powerful execution. We started with a simple belief: businesses that embrace intelligent
+            technology early win markets that others cannot compete in.</p>
+          <p class="reveal" style="transition-delay:0.2s;">We combine strategy, creativity, engineering, and artificial
+            intelligence to build next-generation digital ecosystems. From AI-powered platforms to conversion-focused
+            web experiences, every project carries the same level of obsession.</p>
+          <div class="about-stats reveal" style="transition-delay:0.3s;">
+            <div class="about-stat">
+              <div class="about-stat-num">$12M+</div>
+              <div class="about-stat-label">Revenue generated for clients</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">4.9/5</div>
+              <div class="about-stat-label">Average client rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:60px;">
+        <span class="section-label reveal">Client Stories</span>
+        <h2 class="section-title reveal">Trusted By Builders<br>Around The World</h2>
+      </div>
+      <div class="testi-grid" id="testiGrid"></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:0;">
+        <span class="section-label reveal">How We Work</span>
+        <h2 class="section-title reveal">From Vision To<br>Shipped Product</h2>
+      </div>
+      <div class="process-track" id="processTrack"></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-glow"></div>
+    <div class="container">
+      <div class="cta-border reveal">
+        <div class="cta-inner">
+          <h2 class="cta-title">Your Competitors<br>Are <span
+              style="background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Evolving.</span><br>Are
+            You?</h2>
+          <p class="cta-sub">Let's build something impossible to ignore.</p>
+          <a href="https://wa.me/923030934400?text=Hello%20Obryx%20Technologies%2C%20I%20want%20to%20book%20a%20consultation."
+            target="_blank" class="cta-btn">
+            Book Free Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="nav-logo" style="font-size:22px;">Obryx</div>
+          <p>Building the digital infrastructure of tomorrow. AI-first. Human-centered. Relentlessly forward.</p>
+          <div class="footer-socials">
+            <a class="footer-social" href="#" aria-label="Twitter">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+              </svg>
+            </a>
+            <a class="footer-social" href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a class="footer-social" href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a class="footer-social" href="#" aria-label="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">AI Solutions</a>
+          <a href="#services">Web Development</a>
+          <a href="#services">SaaS Platforms</a>
+          <a href="#services">Mobile Apps</a>
+          <a href="#services">UI/UX Design</a>
+          <a href="#services">Branding</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About Us</a>
+          <a href="#portfolio">Our Work</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#cta">Contact</a>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Get In Touch</h4>
+          <span>
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <a href="mailto:hafizch1133@gmail.com">hafizch1133@gmail.com</a>
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <a href="https://wa.me/923030934400" target="_blank">+92 303 0934400</a>
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Lahore, Pakistan
+          </span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Obryx Technologies. All rights reserved.</div>
+        <div class="footer-tagline">Engineered for the future.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // LOADER
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 2000);
+    });
+
+    // SCROLL PROGRESS
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // MOUSE GLOW
+    const glow = document.getElementById('mouseGlow');
+    window.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    // MOBILE MENU
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // CANVAS PARTICLES
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.size = Math.random() * 1.5 + 0.3;
+        this.alpha = Math.random() * 0.4 + 0.1;
+        this.color = Math.random() > 0.5 ? '79,143,255' : '168,85,247';
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(79,143,255,${0.06 * (1 - dist / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // SERVICES DATA
+    const services = [
+      { name: 'AI Solutions', desc: 'Custom machine learning models, LLM integrations, and intelligent automation built for your business reality.', cat: 'ai', icon: '<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3z"/>' },
+      { name: 'Web Development', desc: 'Performance-first websites and web apps that convert visitors into customers and scale without friction.', cat: 'web', icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>' },
+      { name: 'SaaS Platforms', desc: 'End-to-end SaaS product development from architecture to launch, built for growth and revenue expansion.', cat: 'web', icon: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>' },
+      { name: 'Branding & Identity', desc: 'Visual identities that communicate authority, trust, and differentiation across every touchpoint.', cat: 'growth', icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>' },
+      { name: 'UI/UX Design', desc: 'Research-backed, pixel-perfect interfaces that users love and that drive measurable product outcomes.', cat: 'web', icon: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>' },
+      { name: 'Mobile App Development', desc: 'Native and cross-platform mobile experiences that users return to daily across iOS and Android.', cat: 'web', icon: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>' },
+      { name: 'Automation Systems', desc: 'Intelligent workflows that eliminate manual overhead, reduce errors, and give your team time back.', cat: 'ai', icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' },
+      { name: 'Cloud Infrastructure', desc: 'Scalable, secure, and cost-optimized cloud architecture on AWS, GCP, and Azure built for uptime.', cat: 'ai', icon: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>' },
+      { name: 'E-Commerce Development', desc: 'High-converting online stores with seamless checkout flows, inventory systems, and payment integrations.', cat: 'web', icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>' },
+      { name: 'SEO Optimization', desc: 'Technical and content SEO strategies that drive compounding organic growth month over month.', cat: 'growth', icon: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' },
+      { name: 'Social Media Marketing', desc: 'Platform-native content strategies that build audiences, generate leads, and grow brand equity.', cat: 'growth', icon: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>' },
+      { name: 'API Integration', desc: 'Seamless third-party integrations and custom API development that connects your entire tech stack.', cat: 'ai', icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>' },
+    ];
+
+    function renderServices(filter) {
+      const grid = document.getElementById('servicesGrid');
+      const filtered = filter === 'all' ? services : services.filter(s => s.cat === filter);
+      grid.innerHTML = filtered.map((s, i) => `
+    <div class="service-card reveal" style="transition-delay:${(i % 4) * 0.08}s">
+      <div class="service-icon"><svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:var(--blue2);fill:none;stroke-width:1.8;">${s.icon}</svg></div>
+      <div class="service-name">${s.name}</div>
+      <div class="service-desc">${s.desc}</div>
+      <div class="service-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </div>
+  `).join('');
+      observeReveal();
+    }
+    renderServices('all');
+
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderServices(this.dataset.filter);
+      });
+    });
+
+    // WHY OBRYX
+    const whyItems = [
+      { name: 'AI-First Mindset', desc: 'Every solution we build incorporates intelligent layers — from data pipelines to user-facing AI features.', color: '#4f8fff', icon: '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 19.93z"/>' },
+      { name: 'Scalable By Design', desc: 'Architectures that grow with you — from MVP to enterprise without rewrites or expensive migrations.', color: '#a855f7', icon: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>' },
+      { name: 'Fast Execution', desc: 'Sprint-based delivery with weekly updates. Most projects launch in 4 to 12 weeks, not months.', color: '#22d3ee', icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>' },
+      { name: 'Conversion Focused', desc: 'Every design and development decision is measured against business outcomes, not just aesthetics.', color: '#f59e0b', icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>' },
+      { name: 'Modern Technologies', desc: 'We build with the tools and frameworks that will still matter five years from now, not yesterday\'s stack.', color: '#4f8fff', icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>' },
+      { name: 'Secure Architecture', desc: 'Security is built in from day one — not patched on after. SOC2-aligned development practices throughout.', color: '#a855f7', icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' },
+      { name: 'Premium Support', desc: 'Dedicated project managers, real-time communication, and post-launch care that actually shows up.', color: '#22d3ee', icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
+      { name: 'Innovative Solutions', desc: 'We challenge briefs, push boundaries, and deliver outcomes that competitors haven\'t imagined yet.', color: '#f59e0b', icon: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>' },
+    ];
+
+    const whyGrid = document.querySelector('.why-grid');
+    whyGrid.innerHTML = whyItems.map((w, i) => `
+  <div class="why-card reveal" style="transition-delay:${(i % 4) * 0.08}s">
+    <div class="why-icon" style="background:${w.color}1a;color:${w.color};">
+      <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:${w.color};fill:none;stroke-width:1.8;">${w.icon}</svg>
+    </div>
+    <div class="why-name">${w.name}</div>
+    <div class="why-desc">${w.desc}</div>
+  </div>
+`).join('');
+
+    // PORTFOLIO DATA
+    const portfolioItems = [
+      { name: 'NeuralDesk AI', tag: 'AI Platform', cat: 'ai', gradient: 'linear-gradient(135deg,#0f0c29,#302b63,#24243e)', accent: '#7ab3ff' },
+      { name: 'Apex SaaS Dashboard', tag: 'Web & SaaS', cat: 'web', gradient: 'linear-gradient(135deg,#0a0a0a,#1a1a2e,#16213e)', accent: '#a855f7' },
+      { name: 'Lumina Brand System', tag: 'Branding', cat: 'branding', gradient: 'linear-gradient(135deg,#0f2027,#203a43,#2c5364)', accent: '#22d3ee' },
+      { name: 'FlowMate Mobile App', tag: 'Mobile', cat: 'mobile', gradient: 'linear-gradient(135deg,#1a0533,#2d1b69,#11998e)', accent: '#c084fc' },
+      { name: 'Orion E-Commerce', tag: 'Web & E-Commerce', cat: 'web', gradient: 'linear-gradient(135deg,#141e30,#243b55,#0f3460)', accent: '#4f8fff' },
+      { name: 'Synthos Automation', tag: 'AI & Automation', cat: 'ai', gradient: 'linear-gradient(135deg,#0d0d0d,#1b2631,#2e4057)', accent: '#f59e0b' },
+    ];
+
+    function renderPortfolio(filter) {
+      const grid = document.getElementById('portfolioGrid');
+      const filtered = filter === 'all' ? portfolioItems : portfolioItems.filter(p => p.cat === filter);
+      grid.innerHTML = filtered.map((p, i) => `
+    <div class="port-card reveal" style="transition-delay:${(i % 3) * 0.1}s">
+      <div class="port-card-inner">
+        <div class="port-bg" style="background:${p.gradient};">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:${p.accent}22;border:1px solid ${p.accent}44;display:flex;align-items:center;justify-content:center;">
+            <div style="width:50px;height:50px;border-radius:50%;background:${p.accent}33;border:1px solid ${p.accent}66;"></div>
+          </div>
+          <div class="port-overlay"></div>
+          <div class="port-info">
+            <div class="port-tag">${p.tag}</div>
+            <div class="port-name">${p.name}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+      observeReveal();
+    }
+    renderPortfolio('all');
+
+    document.querySelectorAll('[data-port-filter]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-port-filter]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderPortfolio(this.dataset.portFilter);
+      });
+    });
+
+    // TESTIMONIALS
+    const testimonials = [
+      { name: 'Daniel Carter', role: 'CEO, Nexus Labs', avatar: 'DC', color: '#4f8fff', text: 'Obryx completely transformed our digital presence. They didn\'t just build a website — they engineered a growth system. Our inbound leads increased by 340% within three months of launch.' },
+      { name: 'Sophia Bennett', role: 'Founder, Elara Health', avatar: 'SB', color: '#a855f7', text: 'The AI integration they built for our platform reduced our manual processing time by 80%. The team\'s technical depth is exceptional. They think in solutions, not just deliverables.' },
+      { name: 'Ethan Walker', role: 'CTO, Finpath Technologies', avatar: 'EW', color: '#22d3ee', text: 'We\'ve worked with agencies across three continents. Obryx is the first team that genuinely understood our architecture and delivered production-ready code from week one. Outstanding quality.' },
+      { name: 'Olivia Hayes', role: 'CMO, Radiant Brands', avatar: 'OH', color: '#f59e0b', text: 'The branding and web project exceeded every expectation. Our new identity communicates premium at every touchpoint. The Obryx team has an extraordinary eye for what makes a brand unforgettable.' },
+    ];
+
+    document.getElementById('testiGrid').innerHTML = testimonials.map((t, i) => `
+  <div class="testi-card reveal" style="transition-delay:${(i % 2) * 0.15}s">
+    <div class="stars">${'★'.repeat(5).split('').map(s => `<span class="star">${s}</span>`).join('')}</div>
+    <div class="testi-quote">"</div>
+    <div class="testi-text">${t.text}</div>
+    <div class="testi-author">
+      <div class="testi-avatar" style="background:${t.color}22;color:${t.color};border:1px solid ${t.color}44;">${t.avatar}</div>
+      <div>
+        <div class="testi-name">${t.name}</div>
+        <div class="testi-role">${t.role}</div>
+      </div>
+    </div>
+  </div>
+`).join('');
+
+    // PROCESS
+    const steps = [
+      { num: '01', title: 'Discovery', desc: 'Deep dive into your business, goals, and market position.' },
+      { num: '02', title: 'Strategy', desc: 'Crafting a roadmap aligned with growth objectives.' },
+      { num: '03', title: 'Design', desc: 'Creating intuitive, beautiful interfaces and systems.' },
+      { num: '04', title: 'Development', desc: 'Clean, scalable code built for performance and longevity.' },
+      { num: '05', title: 'Launch', desc: 'Rigorous QA, deployment, and go-live support.' },
+      { num: '06', title: 'Scale', desc: 'Ongoing optimization and growth-driven iteration.' },
+    ];
+
+    document.getElementById('processTrack').innerHTML = steps.map((s, i) => `
+  <div class="process-step reveal" style="transition-delay:${i * 0.1}s">
+    <div class="process-num">${s.num}</div>
+    <div class="process-title">${s.title}</div>
+    <div class="process-desc">${s.desc}</div>
+  </div>
+`).join('');
+
+    // COUNTER ANIMATION
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current) + suffix;
+        if (current >= target) clearInterval(timer);
+      }, 16);
+    }
+
+    // INTERSECTION OBSERVER
+    function observeReveal() {
+      const reveals = document.querySelectorAll('.reveal:not(.visible)');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Counter animation
+            const numEl = entry.target.querySelector('[data-target]') || (entry.target.dataset.target ? entry.target : null);
+            if (numEl && numEl.dataset.target) animateCounter(numEl);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    // Also observe stat cards specifically
+    const statObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const numEl = entry.target.querySelector('[data-target]');
+          if (numEl) animateCounter(numEl);
+          entry.target.classList.add('visible');
+          statObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.stat-card').forEach(el => statObs.observe(el));
+
+    observeReveal();
+  </script>
+</body>
+
+</html>
